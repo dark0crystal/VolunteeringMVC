@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4 mb-4">Welcome to the Volunteering Platform</h1>
+    <p class="mb-4">
+        Learn how you can contribute to your community through various volunteering opportunities. 
+    </p>
+    <a href="/Post/AllPosts" class="btn btn-primary btn-lg">Get Started</a>
+
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <!-- Card 1: How It Works -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                
+                <div class="card-body">
+                    <h5 class="card-title">How It Works</h5>
+                    <p class="card-text">
+                        Learn how to sign up, browse opportunities, and make an impact in your community.
+                    </p>
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Volunteering Opportunities -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+               
+                <div class="card-body">
+                    <h5 class="card-title">Volunteering Opportunities</h5>
+                    <p class="card-text">
+                        Find volunteering opportunities near you and start making a difference today!
+                    </p>
+                   
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: Benefits of Volunteering -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                
+                <div class="card-body">
+                    <h5 class="card-title">Benefits of Volunteering</h5>
+                    <p class="card-text">
+                        Discover the benefits of volunteering, from gaining new skills to making lasting friendships.
+                    </p>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .text-center {
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+
+    /* Card styling */
+    .card {
+        border-radius: 10px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-title {
+        font-weight: bold;
+    }
+</style>

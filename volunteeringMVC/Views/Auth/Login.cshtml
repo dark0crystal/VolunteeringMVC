@@ -1,0 +1,31 @@
+﻿
+@model volunteeringMVC.Models.Register
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2 class="text-center mt-4">Login</h2>
+
+<div class="container mt-5">
+
+  
+    <form method="post" action="/Auth/Login" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label asp-for="Email" >Email:</label>
+            <input id="email" type="email" class="form-control" asp-for="Email" />
+          
+        </div>
+        <span asp-validation-for="Email"></span>
+        <div class="mb-3">
+            <label asp-for="Password" >Password:</label>
+            <input id="password" class="form-control" type="password" asp-for="Password" />
+           
+        </div>
+        <span asp-validation-for="Password"></span>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+    <a href="/Auth/Register">don't have an account</a>
+    
+
+   
+</div>

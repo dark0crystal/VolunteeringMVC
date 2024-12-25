@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<h2 class="text-center mt-4">Register</h2>
+
+<div class="container mt-5">
+    <form method="post" action="/Auth/Register" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name:</label>
+            <input type="text" id="firstName" name="FirstName" class="form-control" required />
+            <div class="invalid-feedback">
+                Please enter your first name.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="familyName" class="form-label">Family Name:</label>
+            <input type="text" id="familyName" name="FamilyName" class="form-control" required />
+            <div class="invalid-feedback">
+                Please enter your family name.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="Email" class="form-control" required />
+            <div class="invalid-feedback">
+                Please enter a valid email address.
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" id="password" name="Password" class="form-control" required />
+            <div class="invalid-feedback">
+                Please enter your password.
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+
+
+    <a href="/Auth/Login">already have an account</a>
+</div>

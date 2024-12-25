@@ -1,0 +1,132 @@
+﻿
+
+
+
+
+<div class="container mt-5">
+    <h3>You are volunteering in these posts (User)</h3>
+    <div class="container mt-4">
+        <h3 class="text-center mb-4">Volunteer Posts</h3>
+        <div class="row">
+            @if (ViewBag.VolunteerIn != null && ViewBag.VolunteerIn.Count > 0)
+            {
+                @foreach (var vol in ViewBag.VolunteerIn)
+                {
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">@vol.Title</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Category: @vol.Category</h6>
+                                <p class="card-text"><strong>Duration:</strong> @vol.NumOfDays days</p>
+                                <p class="card-text"><strong>Location:</strong> @vol.Location</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <p class="text-muted">No volunteering posts available.</p>
+                </div>
+            }
+        </div>
+    </div>
+
+
+    <h3>Your Created Posts (Admin)</h3>
+    <div class="row">
+        @if (ViewBag.CreatedPosts != null && ViewBag.CreatedPosts.Count > 0)
+        {
+            foreach (var item in ViewBag.CreatedPosts)
+            {
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <!-- Post Display -->
+                            <div id="display-@item.Post.Id">
+                                <h5 class="card-title">@item.Post.Title</h5>
+                                <p class="card-text">@item.Post.Description</p>
+                                <p class="card-text"><small class="text-muted">Category: @item.Post.Category</small></p>
+                                <button class="btn btn-primary btn-sm" onclick="toggleEditForm(@item.Post.Id)">Update Post</button>
+                            </div>
+
+                            <!-- Post Edit Form -->
+                            <div id="edit-@item.Post.Id" style="display: none;">
+                                <form method="post" action="/Post/UpdatePost">
+                                    <input type="hidden" name="Id" value="@item.Post.Id" />
+                                    <div class="form-group mb-2">
+                                        <label>Title</label>
+                                        <input type="text" class="form-control" name="Title" value="@item.Post.Title" />
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label>Description</label>
+                                        <textarea class="form-control" name="Description">@item.Post.Description</textarea>
+                                    </div>
+                                    <div class="form-group mb-2">
+                                        <label>Category</label>
+                                        <input type="text" class="form-control" name="Category" value="@item.Post.Category" />
+                                    </div>
+                                    <button type="submit" class="btn btn-success btn-sm">Save Changes</button>
+                                    <button type="button" class="btn btn-secondary btn-sm" onclick="toggleEditForm(@item.Post.Id)">Cancel</button>
+                                </form>
+                            </div>
+
+                            <h6>Complaints</h6>
+                            @if (item.Complaints != null)
+                            {
+                                <ul class="list-group mb-3">
+                                    @foreach (var complaint in item.Complaints)
+                                    {
+                                        <li class="list-group-item">
+                                            <div>
+                                                <strong>Type:</strong> @complaint.ComplaintType
+                                            </div>
+                                            <div>
+                                                <strong>Text:</strong> @complaint.ComplaintText
+                                            </div>
+                                            <div>
+                                                <strong>Post ID:</strong> @complaint.PostId
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <p class="text-muted">No complaints for this post.</p>
+                            }
+
+                            <!-- Delete Post Button -->
+                            <a href="/Post/DeletePost?postId=@item.Post.Id" class="btn btn-danger btn-sm"
+                               onclick="return confirm('Are you sure you want to delete this post and its complaints?');">
+                                Delete Post
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>You have not created any posts yet.</p>
+        }
+    </div>
+</div>
+
+<script>
+    // JavaScript to toggle between display and edit modes
+    function toggleEditForm(postId) {
+        const displayDiv = document.getElementById(`display-${postId}`);
+        const editDiv = document.getElementById(`edit-${postId}`);
+
+        if (displayDiv.style.display === 'none') {
+            displayDiv.style.display = 'block';
+            editDiv.style.display = 'none';
+        } else {
+            displayDiv.style.display = 'none';
+            editDiv.style.display = 'block';
+        }
+    }
+</script>
